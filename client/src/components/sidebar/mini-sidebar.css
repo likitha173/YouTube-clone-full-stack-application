@@ -1,0 +1,125 @@
+/* YouTube Exact Mini Sidebar - 2024 Design */
+.mini-sidebar {
+    position: fixed;
+    top: 56px;
+    left: 0;
+    width: 72px;
+    height: calc(100vh - 56px);
+    background-color: var(--yt-spec-base-background);
+    border-right: 1px solid var(--yt-spec-outline);
+    z-index: 900;
+    display: none;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.mini-sidebar.dark {
+    background-color: var(--yt-spec-base-background-dark);
+    border-right-color: var(--yt-spec-outline-dark);
+}
+
+.mini-sidebar-wrapper {
+    padding: 4px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.mini-sidebar-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 16px 12px 14px 12px;
+    text-decoration: none;
+    color: var(--yt-spec-text-primary);
+    font-weight: 400;
+    transition: all 0.15s ease;
+    border-radius: 12px;
+    gap: 6px;
+    min-height: 74px;
+    margin: 0 4px;
+    position: relative;
+}
+
+.mini-sidebar.dark .mini-sidebar-item {
+    color: var(--yt-spec-text-primary-dark);
+}
+
+.mini-sidebar-item:hover {
+    background-color: var(--yt-spec-touch-response);
+    text-decoration: none;
+    color: inherit;
+    border-radius: 12px;
+}
+
+.mini-sidebar.dark .mini-sidebar-item:hover {
+    background-color: var(--yt-spec-touch-response-dark);
+}
+
+.mini-sidebar-item.active {
+    background-color: var(--yt-spec-touch-response);
+    font-weight: 500;
+    border-radius: 12px;
+}
+
+.mini-sidebar.dark .mini-sidebar-item.active {
+    background-color: var(--yt-spec-touch-response-dark);
+}
+
+.mini-sidebar-icon {
+    font-size: 24px;
+    color: inherit;
+    flex-shrink: 0;
+    transition: color 0.15s ease;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mini-sidebar-label {
+    font-size: 10px;
+    font-weight: 400;
+    line-height: 1.2;
+    text-align: center;
+    color: inherit;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 48px;
+    transition: color 0.15s ease;
+}
+
+/* Show mini sidebar on large screens only */
+@media (min-width: 1313px) {
+    .mini-sidebar {
+        display: block;
+    }
+}
+
+/* Custom scrollbar for mini sidebar */
+.mini-sidebar::-webkit-scrollbar {
+    width: 8px;
+}
+
+.mini-sidebar::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.mini-sidebar::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+}
+
+.mini-sidebar::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.mini-sidebar.dark::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.mini-sidebar.dark::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(255, 255, 255, 0.4);
+}

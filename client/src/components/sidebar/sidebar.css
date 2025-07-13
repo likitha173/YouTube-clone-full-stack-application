@@ -1,0 +1,488 @@
+/* YouTube-exact Sidebar */
+.sidebar {
+  position: fixed;
+  top: 56px;
+  left: -240px;
+  width: 240px;
+  height: calc(100vh - 56px);
+  background-color: #fff;
+  z-index: 1000;
+  transition: left 0.25s cubic-bezier(0.05, 0, 0, 1);
+  overflow: hidden;
+  border-right: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.sidebar.active {
+  left: 0;
+}
+
+.sidebar-wrapper {
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 0;
+}
+
+.sidebar-wrapper::-webkit-scrollbar {
+  width: 8px;
+}
+
+.sidebar-wrapper::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.sidebar-wrapper::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+}
+
+.sidebar-wrapper::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+/* Dark theme */
+.sidebar-wrapper.dark {
+  background-color: #0f0f0f;
+  color: #f1f1f1;
+}
+
+.sidebar.dark {
+  background-color: #0f0f0f;
+  border-right-color: rgba(255, 255, 255, 0.1);
+}
+
+.sidebar-wrapper.dark::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.sidebar-wrapper.dark::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(255, 255, 255, 0.4);
+}
+
+.sidebar-wrapper.dark .sidebar-item {
+  color: #ffffff;
+  font-weight: 500;
+}
+
+.sidebar-wrapper.dark .sidebar-item:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.sidebar-wrapper.dark .sidebar-item .sidebar-icon {
+  color: #cccccc;
+}
+
+.sidebar-wrapper.dark .sidebar-item:hover .sidebar-icon {
+  color: #ffffff;
+}
+
+.sidebar-wrapper.dark .sidebar-item.active .sidebar-icon {
+  color: #ffffff;
+}
+
+.sidebar-wrapper.dark .sidebar-heading {
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.sidebar-wrapper.dark .sidebar-links a {
+  color: #aaa;
+}
+
+.sidebar-wrapper.dark .sidebar-links a:hover {
+  color: #f1f1f1;
+}
+
+.sidebar-wrapper.dark .sidebar-copyright {
+  color: #717171;
+}
+
+.sidebar-wrapper.dark .signin-button {
+  color: #3ea6ff;
+  border-color: #3d3d3d;
+}
+
+.sidebar-wrapper.dark .signin-button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.sidebar-wrapper.dark .sidebar-separator {
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Sidebar sections */
+.sidebar-section {
+  padding: 12px 0;
+}
+
+.sidebar-section:first-child {
+  padding-top: 12px;
+}
+
+.sidebar-item {
+  display: flex;
+  align-items: center;
+  padding: 0 24px;
+  height: 40px;
+  text-decoration: none;
+  color: #0f0f0f;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  transition: all 0.15s ease;
+  border-radius: 0;
+}
+
+.sidebar-item:hover {
+  background-color: rgba(0, 0, 0, 0.08);
+  text-decoration: none;
+  color: #000000;
+  font-weight: 600;
+}
+
+.sidebar-item:hover .sidebar-icon {
+  color: #000000;
+}
+
+.sidebar-item.active {
+  background-color: rgba(0, 0, 0, 0.08);
+  font-weight: 600;
+  color: #000000;
+}
+
+.sidebar-item.active .sidebar-icon {
+  color: #000000;
+}
+
+.sidebar-icon {
+  width: 24px;
+  height: 24px;
+  margin-right: 24px;
+  flex-shrink: 0;
+  font-size: 24px;
+  color: #333333;
+}
+
+.sidebar-heading {
+  padding: 8px 24px 4px 24px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #000000;
+  margin: 0;
+  line-height: 22px;
+}
+
+.sidebar-separator {
+  border: none;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  margin: 12px 0;
+  height: 1px;
+}
+
+/* Sign in section */
+.sidebar-signin {
+  padding: 16px 24px;
+}
+
+.sidebar-signin p {
+  font-size: 13px;
+  line-height: 18px;
+  color: #606060;
+  margin: 0 0 20px 0;
+}
+
+.signin-button {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 15px;
+  border: 1px solid #c7c7c7;
+  border-radius: 18px;
+  background: transparent;
+  color: #065fd4;
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.1s ease;
+  gap: 8px;
+}
+
+.signin-button:hover {
+  background-color: rgba(6, 95, 212, 0.05);
+  border-color: #c7c7c7;
+  text-decoration: none;
+  color: #065fd4;
+}
+
+.signin-icon {
+  font-size: 20px;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Footer */
+.sidebar-footer {
+  padding: 16px 24px 24px 24px;
+}
+
+.sidebar-links {
+  margin-bottom: 16px;
+}
+
+.sidebar-links a {
+  display: inline-block;
+  color: #606060;
+  font-size: 13px;
+  font-weight: 500;
+  text-decoration: none;
+  line-height: 18px;
+  margin-right: 8px;
+  margin-bottom: 2px;
+}
+
+.sidebar-links a:hover {
+  color: #0f0f0f;
+}
+
+.sidebar-links a:after {
+  content: " ";
+  margin-left: 8px;
+}
+
+.sidebar-links a:last-child:after {
+  content: "";
+  margin-left: 0;
+}
+
+.sidebar-copyright {
+  color: #909090;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 16px;
+}
+
+/* Overlay */
+.sidebar-overlay {
+  position: fixed;
+  top: 56px;
+  left: 0;
+  width: 100vw;
+  height: calc(100vh - 56px);
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.25s ease, visibility 0.25s ease;
+}
+
+.sidebar.active+.sidebar-overlay,
+.sidebar.active .sidebar-overlay {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Mobile adjustments */
+@media (max-width: 1312px) {
+  .sidebar {
+    left: -240px;
+  }
+
+  .sidebar.active .sidebar-overlay {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+@media (min-width: 1313px) {
+  .sidebar {
+    position: fixed;
+    left: 0;
+    transition: none;
+  }
+
+  .sidebar-overlay {
+    display: none;
+  }
+}
+
+/* YouTube compact sidebar for larger screens */
+@media (min-width: 1313px) {
+  .sidebar-compact {
+    width: 72px;
+    left: 0;
+  }
+
+  .sidebar-compact .sidebar-item span {
+    display: none;
+  }
+
+  .sidebar-compact .sidebar-heading {
+    display: none;
+  }
+
+  .sidebar-compact .sidebar-separator {
+    display: none;
+  }
+
+  .sidebar-compact .sidebar-footer {
+    display: none;
+  }
+
+  .sidebar-compact .sidebar-signin {
+    display: none;
+  }
+
+  .sidebar-compact .sidebar-item {
+    flex-direction: column;
+    height: 74px;
+    padding: 16px 24px;
+    font-size: 10px;
+    text-align: center;
+  }
+
+  .sidebar-compact .sidebar-icon {
+    margin-right: 0;
+    margin-bottom: 6px;
+  }
+}
+
+.signin-button {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 15px;
+  background: transparent;
+  border: 1px solid #065fd4;
+  border-radius: 18px;
+  color: #065fd4;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.15s ease;
+  gap: 8px;
+}
+
+.signin-button:hover {
+  background-color: rgba(6, 95, 212, 0.05);
+  text-decoration: none;
+  color: #065fd4;
+}
+
+.signin-icon {
+  margin-right: 8px;
+  font-size: 18px;
+}
+
+/* Footer */
+.sidebar-footer {
+  padding: 16px 24px;
+}
+
+.sidebar-links {
+  margin-bottom: 16px;
+}
+
+.sidebar-links a {
+  display: inline-block;
+  font-size: 13px;
+  color: #606060;
+  text-decoration: none;
+  margin-right: 8px;
+  margin-bottom: 2px;
+}
+
+.sidebar-links a:hover {
+  color: #0f0f0f;
+}
+
+.sidebar-links a:after {
+  content: "•";
+  margin-left: 8px;
+  color: #606060;
+}
+
+.sidebar-links a:last-child:after {
+  display: none;
+}
+
+.sidebar-copyright {
+  font-size: 12px;
+  color: #909090;
+  line-height: 16px;
+}
+
+/* Overlay */
+.sidebar-overlay {
+  position: fixed;
+  top: 56px;
+  left: 240px;
+  width: calc(100vw - 240px);
+  height: calc(100vh - 56px);
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  display: none;
+}
+
+.sidebar.active .sidebar-overlay {
+  display: block;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .sidebar {
+    width: 280px;
+    left: -280px;
+  }
+
+  .sidebar-overlay {
+    left: 280px;
+    width: calc(100vw - 280px);
+  }
+}
+
+@media (max-width: 480px) {
+  .sidebar {
+    width: 100vw;
+    left: -100vw;
+  }
+
+  .sidebar-overlay {
+    display: none;
+  }
+}
+
+/* Desktop mini sidebar when closed */
+@media (min-width: 1313px) {
+  .sidebar:not(.active) {
+    left: 0;
+    width: 72px;
+  }
+
+  .sidebar:not(.active) .sidebar-item span {
+    display: none;
+  }
+
+  .sidebar:not(.active) .sidebar-item {
+    justify-content: center;
+    padding: 0 12px;
+    flex-direction: column;
+    height: 74px;
+    font-size: 10px;
+  }
+
+  .sidebar:not(.active) .sidebar-icon {
+    margin-right: 0;
+    margin-bottom: 6px;
+  }
+
+  .sidebar:not(.active) .sidebar-heading,
+  .sidebar:not(.active) .sidebar-separator,
+  .sidebar:not(.active) .sidebar-signin,
+  .sidebar:not(.active) .sidebar-footer {
+    display: none;
+  }
+}

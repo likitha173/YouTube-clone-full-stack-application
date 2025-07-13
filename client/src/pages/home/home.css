@@ -1,0 +1,192 @@
+/* YouTube Enhanced Home Page */
+.home {
+  width: 100%;
+  min-height: 100vh;
+  padding-top: 56px;
+  padding-left: 0;
+  background-color: var(--yt-spec-base-background);
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+}
+
+.app.dark .home {
+  background-color: var(--yt-spec-base-background-dark);
+}
+
+/* Account for sidebar on larger screens */
+@media (min-width: 1313px) {
+  .home {
+    padding-left: 72px;
+    /* Mini sidebar width */
+  }
+
+  /* Full sidebar active */
+  .sidebar.active~* .home {
+    padding-left: 240px;
+  }
+}
+
+/* Enhanced Category chips container */
+.category-tabs {
+  position: sticky;
+  top: 56px;
+  background-color: var(--yt-spec-base-background);
+  border-bottom: 1px solid var(--yt-spec-outline);
+  z-index: 100;
+  padding: 12px 0;
+  margin-left: 0;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.category-tabs.scrolled {
+  background-color: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.app.dark .category-tabs {
+  background-color: var(--yt-spec-base-background-dark);
+  border-bottom-color: var(--yt-spec-outline-dark);
+}
+
+.app.dark .category-tabs.scrolled {
+  background-color: rgba(15, 15, 15, 0.95);
+  box-shadow: 0 1px 3px rgba(255, 255, 255, 0.1);
+}
+
+.category-chips-container {
+  position: relative;
+  width: 100%;
+}
+
+.category-chips {
+  display: flex;
+  gap: 12px;
+  padding: 0 24px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  scroll-behavior: smooth;
+  position: relative;
+  mask-image: linear-gradient(90deg, transparent 0px, black 24px, black calc(100% - 24px), transparent 100%);
+  -webkit-mask-image: linear-gradient(90deg, transparent 0px, black 24px, black calc(100% - 24px), transparent 100%);
+}
+
+.category-chips::-webkit-scrollbar {
+  display: none;
+}
+
+.category-gradient-fade {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 24px;
+  height: 100%;
+  background: linear-gradient(90deg, transparent 0%, var(--yt-spec-base-background) 100%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.app.dark .category-gradient-fade {
+  background: linear-gradient(90deg, transparent 0%, var(--yt-spec-base-background-dark) 100%);
+}
+
+.category-chip {
+  flex-shrink: 0;
+  padding: 8px 12px;
+  background-color: var(--yt-spec-suggested-action);
+  border: 1px solid transparent;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--yt-spec-text-primary);
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  white-space: nowrap;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.category-chip::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.category-chip:hover::before {
+  left: 100%;
+}
+
+.category-chip:hover {
+  background-color: var(--yt-spec-button-chip-background-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.category-chip.active {
+  background-color: var(--yt-spec-text-primary);
+  color: var(--yt-spec-base-background);
+  border-color: transparent;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.category-chip.active:hover {
+  background-color: #272727;
+  transform: translateY(-1px);
+}
+
+.home-content {
+  width: 100%;
+  flex: 1;
+  position: relative;
+}
+
+/* Dark theme */
+.app.dark .category-chip {
+  background-color: var(--yt-spec-suggested-action-dark);
+  color: var(--yt-spec-text-primary-dark);
+}
+
+.app.dark .category-chip:hover {
+  background-color: var(--yt-spec-button-chip-background-hover-dark);
+}
+
+.app.dark .category-chip.active {
+  background-color: var(--yt-spec-text-primary-dark);
+  color: var(--yt-spec-base-background-dark);
+}
+
+.app.dark .category-chip.active:hover {
+  background-color: #e5e5e5;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .category-chips {
+    padding: 0 16px;
+    gap: 8px;
+  }
+
+  .category-chip {
+    padding: 6px 12px;
+    font-size: 13px;
+  }
+}
+
+/* Adjust main content margin when sidebar is open */
+@media (min-width: 1313px) {
+  .sidebar:not(.active)~* .home {
+    margin-left: 72px;
+  }
+}

@@ -1,0 +1,475 @@
+/* YouTube Exact Navbar */
+.navbar {
+  height: 56px;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 2020;
+  background-color: #fff;
+  border-bottom: 1px solid #e5e5e5;
+  transition: background-color 0.2s ease;
+  font-family: 'Roboto', sans-serif;
+}
+
+.navbar.dark {
+  background-color: #0f0f0f;
+  border-bottom-color: #3d3d3d;
+}
+
+.nav-wrapper {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+  position: relative;
+  max-width: none;
+}
+
+.nav-left {
+  display: flex;
+  align-items: center;
+  min-width: 169px;
+  flex-shrink: 0;
+}
+
+.nav-left .logo {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  margin-left: 16px;
+  height: 20px;
+}
+
+.youtube-logo {
+  height: 20px;
+  width: 90px;
+  display: block;
+}
+
+.logo-text {
+  font-size: 18px;
+  font-weight: 900;
+  color: #ff0000;
+  text-decoration: none;
+  letter-spacing: -0.5px;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.navbar.dark .logo-text {
+  color: #ff4444;
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.2);
+}
+
+/* YouTube logo theme-responsive styling */
+.youtube-logo #youtube-paths path {
+  fill: var(--yt-spec-text-primary);
+  transition: fill 0.2s ease;
+}
+
+.navbar.dark .youtube-logo #youtube-paths path {
+  fill: var(--yt-spec-text-primary-dark);
+}
+
+/* Keep the YouTube red icon unchanged */
+.youtube-logo path[fill="#FF0000"] {
+  fill: #FF0000 !important;
+}
+
+.youtube-logo path[fill="white"] {
+  fill: white !important;
+}
+
+/* Alternative: If you want a text-based logo */
+.logo-text-alt {
+  font-size: 20px;
+  font-weight: 900;
+  color: var(--yt-spec-text-primary);
+  text-decoration: none;
+  letter-spacing: -1px;
+  font-family: 'Roboto', sans-serif;
+  margin-left: 8px;
+  transition: color 0.2s ease;
+}
+
+.navbar.dark .logo-text-alt {
+  color: var(--yt-spec-text-primary-dark);
+}
+
+.logo-text-alt .you {
+  color: var(--yt-spec-text-primary);
+}
+
+.logo-text-alt .tube {
+  color: var(--yt-spec-text-primary);
+}
+
+.navbar.dark .logo-text-alt .you {
+  color: var(--yt-spec-text-primary-dark);
+}
+
+.navbar.dark .logo-text-alt .tube {
+  color: var(--yt-spec-text-primary-dark);
+}
+
+.nav-center {
+  display: flex;
+  flex-grow: 1;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  margin: 0 40px;
+  max-width: 728px;
+  min-width: 0;
+}
+
+.search-form {
+  display: flex;
+  align-items: center;
+  flex-grow: 1;
+  height: 40px;
+  max-width: 600px;
+  gap: 16px;
+}
+
+.search-container {
+  display: flex;
+  flex-grow: 1;
+  height: 40px;
+  max-width: 540px;
+  position: relative;
+}
+
+.search-input {
+  width: 100%;
+  height: 100%;
+  padding: 0 16px;
+  padding-right: 52px;
+  border: 1px solid #ccc;
+  border-radius: 40px 0 0 40px;
+  background-color: #fff;
+  color: #0f0f0f;
+  font-size: 16px;
+  font-weight: 400;
+  outline: none;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+  font-family: 'Roboto', sans-serif;
+}
+
+.navbar.dark .search-input {
+  background-color: #121212;
+  border-color: #303030;
+  color: #f1f1f1;
+}
+
+.search-input::placeholder {
+  color: #606060;
+}
+
+.navbar.dark .search-input::placeholder {
+  color: #aaaaaa;
+}
+
+
+.search-button {
+  height: 100%;
+  width: 64px;
+  font-size: 18px;
+  border: 1px solid #ccc;
+  border-left: none;
+  border-radius: 0 40px 40px 0;
+  background-color: #f8f8f8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #0f0f0f;
+  transition: all 0.1s ease;
+  margin-left: -1px;
+}
+
+.navbar.dark .search-button {
+  background-color: #222;
+  border-color: #303030;
+  color: #f1f1f1;
+}
+
+.search-button:hover {
+  background-color: #f0f0f0;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, .10);
+}
+
+.navbar.dark .search-button:hover {
+  background-color: #3a3a3a;
+}
+
+.voice-search-button {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: none;
+  background-color: #f8f8f8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 16px;
+  color: #0f0f0f;
+  transition: all 0.1s ease;
+}
+
+.navbar.dark .voice-search-button {
+  background-color: #222;
+  color: #f1f1f1;
+}
+
+.voice-search-button:hover {
+  background-color: #e5e5e5;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, .10);
+}
+
+.navbar.dark .voice-search-button:hover {
+  background-color: #3a3a3a;
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 225px;
+  justify-content: space-evenly;
+  flex-shrink: 0;
+}
+
+/* YouTube-style nav icons */
+.nav-icon {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  background-color: transparent;
+  transition: all 0.1s ease;
+  font-size: 18px;
+  position: relative;
+  color: #606060;
+  border: none;
+  outline: none;
+}
+
+.navbar.dark .nav-icon {
+  color: #aaaaaa;
+}
+
+.nav-icon:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+  color: #0f0f0f;
+}
+
+.navbar.dark .nav-icon:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #f1f1f1;
+}
+
+/* Hamburger menu */
+.nav-icon:first-child {
+  margin-right: 8px;
+}
+
+/* Upload button */
+.upload-btn {
+  position: relative;
+}
+
+/* Notification badge */
+.notification-badge {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  background-color: #cc0000;
+  color: white;
+  border-radius: 50%;
+  min-width: 16px;
+  height: 16px;
+  font-size: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  padding: 0 4px;
+}
+
+/* Apps menu */
+.apps-menu {
+  font-size: 20px;
+}
+
+/* Profile menu */
+.profile-menu {
+  background: transparent !important;
+  margin-left: 8px;
+  padding: 0 !important;
+}
+
+/* Sign in button */
+.signin-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 15px;
+  border: 1px solid #065fd4;
+  border-radius: 18px;
+  background: transparent;
+  color: #065fd4;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.1s ease;
+  white-space: nowrap;
+  height: 36px;
+  text-decoration: none;
+  font-family: 'Roboto', sans-serif;
+}
+
+.signin-button:hover {
+  background-color: rgba(6, 95, 212, 0.05);
+  color: #065fd4;
+  text-decoration: none;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, .10);
+}
+
+.navbar.dark .signin-button {
+  color: #3ea6ff;
+  border-color: #3ea6ff;
+}
+
+.navbar.dark .signin-button:hover {
+  background-color: rgba(62, 166, 255, 0.1);
+  color: #3ea6ff;
+}
+
+.signin-icon {
+  font-size: 18px;
+  width: 18px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Mobile styles */
+.nav-icon.mobile {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .nav-wrapper {
+    padding: 0 16px;
+  }
+
+  .nav-center {
+    margin: 0 24px;
+  }
+}
+
+@media (max-width: 640px) {
+  .nav-wrapper {
+    padding: 0 12px;
+  }
+
+  .nav-center {
+    margin: 0;
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: inherit;
+    z-index: 10;
+    height: 56px;
+    max-width: none;
+    transform: translateY(-100%);
+    transition: transform 0.2s ease;
+    padding: 0 12px;
+  }
+
+  .nav-center.active {
+    display: flex;
+    transform: translateY(0);
+  }
+
+  .nav-left.mobile-search,
+  .nav-right.mobile-search {
+    display: none;
+  }
+
+  .nav-icon.mobile {
+    display: flex;
+  }
+
+  .search-form {
+    max-width: none;
+    margin: 0;
+  }
+
+  .voice-search-button {
+    display: none;
+  }
+
+  .search-mobile {
+    display: flex;
+  }
+}
+
+@media (max-width: 480px) {
+  .nav-wrapper {
+    padding: 0 8px;
+  }
+
+  .youtube-logo {
+    width: 80px;
+  }
+
+  .signin-button {
+    padding: 6px 10px;
+    font-size: 12px;
+    height: 30px;
+  }
+
+  .nav-left .logo {
+    margin-left: 8px;
+  }
+}
+
+/* Focus states for accessibility */
+.nav-icon:focus-visible,
+.signin-button:focus-visible,
+.voice-search-button:focus-visible,
+.search-button:focus-visible {
+  outline: 2px solid #065fd4;
+  outline-offset: 2px;
+}
+
+.navbar.dark .nav-icon:focus-visible,
+.navbar.dark .signin-button:focus-visible,
+.navbar.dark .voice-search-button:focus-visible,
+.navbar.dark .search-button:focus-visible {
+  outline-color: #3ea6ff;
+}
+
+/* Improved interaction states */
+.nav-icon:active {
+  transform: scale(0.95);
+}
+
+.search-button:active,
+.voice-search-button:active {
+  transform: scale(0.95);
+}
+
+.signin-button:active {
+  transform: scale(0.98);
+}

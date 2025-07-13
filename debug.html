@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Debug Authentication</title>
+</head>
+
+<body>
+    <h1>Authentication Debug</h1>
+
+    <div>
+        <h2>Register</h2>
+        <input type="text" id="regName" placeholder="Name" value="TestUser2">
+        <input type="email" id="regEmail" placeholder="Email" value="test2@example.com">
+        <input type="password" id="regPassword" placeholder="Password" value="password123">
+        <button onclick="register()">Register</button>
+        <div id="regResult"></div>
+    </div>
+
+    <div>
+        <h2>Login</h2>
+        <input type="text" id="loginName" placeholder="Name" value="TestUser">
+        <input type="password" id="loginPassword" placeholder="Password" value="password123">
+        <button onclick="login()">Login</button>
+        <div id="loginResult"></div>
+    </div>
+
+    <div>
+        <h2>Test Upload (after login)</h2>
+        <input type="file" id="videoFile" accept="video/*">
+        <button onclick="testUpload()">Test Upload</button>
+        <div id="uploadResult"></div>
+    </div>
+
+    <script>
+        const API_BASE = 'http://localhost:5000/api';
+
+        async function register() {
+            try {
+                const response = await fetch(`${API_BASE}/auth/register`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    credentials: 'include',
+                    body: JSON.stringify({
+                        name: document.getElementById('regName').value,
+                        email: document.getElementById('regEmail').value,
+                        password: document.getElementById('regPassword').value,
+                    })
+                });
+
+                const result = await response.text();
+                document.getElementById('regResult').innerHTML = `Status: ${response.status}<br>Result: ${result}`;
+                console.log('Register response:', result);
+            } catch (error) {
+                document.getElementById('regResult').innerHTML = `Error: ${error.message}`;
+                console.error('Register error:', error);
+            }
+        }
+
+        async function login() {
+            try {
+                const response = await fetch(`${API_BASE}/auth/login`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    credentials: 'include',
+                    body: JSON.stringify({
+                        name: document.getElementById('loginName').value,
+                        password: document.getElementById('loginPassword').value,
+                    })
+                });
+
+                const result = await response.json();
+                document.getElementById('loginResult').innerHTML = `Status: ${response.status}<br>Result: ${JSON.stringify(result)}`;
+                console.log('Login response:', result);
+            } catch (error) {
+                document.getElementById('loginResult').innerHTML = `Error: ${error.message}`;
+                console.error('Login error:', error);
+            }
+        }
+
+        async function testUpload() {
+            const fileInput = document.getElementById('videoFile');
+            if (!fileInput.files[0]) {
+                alert('Please select a video file first');
+                return;
+            }
+
+            try {
+                const formData = new FormData();
+                const filename = new Date().getTime() + "-" + fileInput.files[0].name;
+                formData.append("filename", filename);
+                formData.append("file", fileInput.files[0]);
+
+                const response = await fetch(`${API_BASE}/uploads/videos`, {
+                    method: 'POST',
+                    credentials: 'include',
+                    body: formData
+                });
+
+                const result = await response.text();
+                document.getElementById('uploadResult').innerHTML = `Status: ${response.status}<br>Result: ${result}`;
+                console.log('Upload response:', result);
+            } catch (error) {
+                document.getElementById('uploadResult').innerHTML = `Error: ${error.message}`;
+                console.error('Upload error:', error);
+            }
+        }
+    </script>
+</body>
+
+</html>

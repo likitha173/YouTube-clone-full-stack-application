@@ -1,0 +1,66 @@
+.filters {
+    padding: 1rem 0;
+    border-bottom: 1px solid #e5e5e5;
+    background: white;
+    position: sticky;
+    top: 60px;
+    z-index: 10;
+}
+
+.filters-wrapper {
+    display: flex;
+    gap: 0.5rem;
+    overflow-x: auto;
+    padding: 0 1rem;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.filters-wrapper::-webkit-scrollbar {
+    display: none;
+}
+
+.filter-btn {
+    background: #f9f9f9;
+    border: 1px solid #e5e5e5;
+    border-radius: 32px;
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #333;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all 0.2s ease;
+}
+
+.filter-btn:hover {
+    background: #e5e5e5;
+}
+
+.filter-btn.active {
+    background: #000;
+    color: white;
+    border-color: #000;
+}
+
+/* Dark theme */
+.app.dark .filters {
+    background: #0f0f0f;
+    border-bottom-color: #333;
+}
+
+.app.dark .filter-btn {
+    background: #272727;
+    border-color: #333;
+    color: #fff;
+}
+
+.app.dark .filter-btn:hover {
+    background: #3f3f3f;
+}
+
+.app.dark .filter-btn.active {
+    background: #fff;
+    color: #000;
+    border-color: #fff;
+}
