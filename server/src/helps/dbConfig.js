@@ -2,7 +2,8 @@ const mongoose = require("mongoose");
 
 const mongoConnection = async (retries = 5) => {
   try {
-    await mongoose.connect(process.env.MONGODB_URL, {
+    const mongoURI = process.env.MONGODB_URI || process.env.MONGODB_URL || 'mongodb://localhost:27017/youtube-clone';
+    await mongoose.connect(mongoURI, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
       serverSelectionTimeoutMS: 5000, // Timeout after 5s instead of 30s
