@@ -13,7 +13,7 @@ const commentRoutes = require("./routes/comments");
 const app = express();
 dotenv.config();
 
-const PORT = process.env.SERVER_PORT || 5001;
+const PORT = process.env.PORT || 5000;
 
 app.use(cookieParser());
 app.use(express.json({ limit: '50mb' }));
