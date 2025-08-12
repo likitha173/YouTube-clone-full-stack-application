@@ -1,6 +1,9 @@
 const mongoose = require("mongoose");
 
 const mongoConnection = async (retries = 5) => {
+  // Debug: Print out environment variables for Render troubleshooting
+  console.log('MONGODB_URI:', process.env.MONGODB_URI);
+  console.log('MONGODB_URL:', process.env.MONGODB_URL);
   try {
     const mongoURI = process.env.MONGODB_URI || process.env.MONGODB_URL || 'mongodb://localhost:27017/youtube-clone';
     await mongoose.connect(mongoURI, {
